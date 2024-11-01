@@ -1,11 +1,8 @@
-/* eslint-disable react/prop-types */
-import NewPost from "./NewPost";
+import { useEffect, useState } from "react";
 import Post from "./Post";
 import classes from "./PostList.module.css";
-import Modal from "./Modal";
-import { useEffect, useState } from "react";
 
-function PostList({ isPosting, onStopPosting }) {
+function PostList() {
   const [posts, setPosts] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
 
@@ -36,12 +33,6 @@ function PostList({ isPosting, onStopPosting }) {
 
   return (
     <>
-      {isPosting && (
-        <Modal onClose={onStopPosting}>
-          <NewPost onCancel={onStopPosting} onAddPost={addPostHandler} />
-        </Modal>
-      )}
-
       {!isFetching && posts.length && (
         <ul className={classes.posts}>
           {posts.map((post) => (
