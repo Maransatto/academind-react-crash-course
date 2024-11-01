@@ -5,6 +5,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import NewPost, { action as createPostAction } from "./routes/NewPost";
 import RootLayout from "./routes/RootLayout";
 import Posts, { loader as postsLoader } from "./routes/Posts";
+import PostDetails, { loader as postDetailsLoader } from "./routes/PostDetails";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,11 @@ const router = createBrowserRouter([
             path: "/create-post",
             element: <NewPost />,
             action: createPostAction,
+          },
+          {
+            path: "/:id",
+            loader: postDetailsLoader,
+            element: <PostDetails />,
           },
         ],
       },
